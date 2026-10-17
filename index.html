@@ -2,1377 +2,1301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TVSC Pollwatch | Political Polling & Electoral Data</title>
-
-    <meta name="description" content="TVSC Pollwatch provides independent political polling, electorate data, voting trends and electoral analysis.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #101a2b;
-            --navy-light: #17243a;
-            --blue: #1e5eff;
-            --blue-dark: #1648c9;
-            --light-blue: #eef4ff;
-            --red: #d9283f;
-            --green: #159447;
-            --orange: #e58b1b;
-            --purple: #7655d9;
-            --text: #172033;
-            --muted: #697386;
-            --border: #e2e6ed;
-            --background: #f6f8fb;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.5;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           TOP BAR
-        ========================= */
-
-        .topbar {
-            background: #0a1120;
-            color: #cbd3e0;
-            font-size: 13px;
-            padding: 8px 0;
-        }
-
-        .topbar-inner {
-            max-width: 1250px;
-            margin: auto;
-            padding: 0 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-main {
-            max-width: 1250px;
-            margin: auto;
-            padding: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .logo {
-            width: 48px;
-            height: 48px;
-            background: var(--blue);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 20px;
-            border-radius: 7px;
-        }
-
-        .brand-name {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-subtitle {
-            color: var(--muted);
-            font-size: 12px;
-            margin-top: -2px;
-        }
-
-        .header-date {
-            text-align: right;
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            background: var(--navy);
-            color: white;
-        }
-
-        .nav-inner {
-            max-width: 1250px;
-            margin: auto;
-            padding: 0 22px;
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            padding: 15px 18px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background: var(--blue);
-        }
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main {
-            max-width: 1250px;
-            margin: auto;
-            padding: 32px 22px 60px;
-        }
-
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-        .section-title h2 {
-            font-size: 21px;
-        }
-
-        .section-title a {
-            color: var(--blue);
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            background: var(--navy);
-            color: white;
-            border-radius: 10px;
-            padding: 38px;
-            margin-bottom: 28px;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 30px;
-        }
-
-        .hero-label {
-            display: inline-block;
-            background: var(--blue);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: .5px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: 37px;
-            line-height: 1.12;
-            margin-bottom: 13px;
-        }
-
-        .hero p {
-            color: #cbd3e0;
-            max-width: 650px;
-            font-size: 15px;
-        }
-
-        .hero-buttons {
-            margin-top: 22px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 17px;
-            border-radius: 5px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .btn-primary {
-            background: var(--blue);
-            color: white;
-        }
-
-        .btn-secondary {
-            border: 1px solid #48556c;
-            color: white;
-        }
-
-        .hero-stat {
-            background: #18253b;
-            border: 1px solid #293851;
-            border-radius: 8px;
-            padding: 23px;
-        }
-
-        .hero-stat-title {
-            color: #aab5c7;
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .hero-stat-number {
-            font-size: 43px;
-            font-weight: 800;
-            margin: 3px 0;
-        }
-
-        .hero-stat-small {
-            color: #aab5c7;
-            font-size: 12px;
-        }
-
-        /* =========================
-           POLL CARDS
-        ========================= */
-
-        .poll-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .poll-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 19px;
-        }
-
-        .poll-card:hover {
-            border-color: #bcc9dd;
-        }
-
-        .poll-card .label {
-            font-size: 11px;
-            color: var(--muted);
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .poll-card h3 {
-            font-size: 16px;
-            margin: 5px 0 15px;
-        }
-
-        .poll-number {
-            font-size: 31px;
-            font-weight: 800;
-        }
-
-        .poll-change {
-            font-size: 12px;
-            font-weight: 700;
-            margin-left: 7px;
-        }
-
-        .up {
-            color: var(--green);
-        }
-
-        .down {
-            color: var(--red);
-        }
-
-        .neutral {
-            color: var(--muted);
-        }
-
-        /* =========================
-           CONTENT GRID
-        ========================= */
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 25px;
-        }
-
-        .panel {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 25px;
-        }
-
-        .panel-header {
-            padding: 17px 19px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .panel-header h2 {
-            font-size: 17px;
-        }
-
-        .panel-header a {
-            color: var(--blue);
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           PARTY POLLING
-        ========================= */
-
-        .party-row {
-            padding: 15px 19px;
-            border-bottom: 1px solid #edf0f4;
-        }
-
-        .party-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 7px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .party-name {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .party-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .national {
-            background: #1473c9;
-        }
-
-        .labour {
-            background: #d82c3e;
-        }
-
-        .greens {
-            background: #58a832;
-        }
-
-        .act {
-            background: #f2c500;
-        }
-
-        .nzfirst {
-            background: #111111;
-        }
-
-        .bar {
-            width: 100%;
-            height: 9px;
-            background: #edf0f4;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            border-radius: 10px;
-        }
-
-        .national-fill {
-            background: #1473c9;
-            width: 38%;
-        }
-
-        .labour-fill {
-            background: #d82c3e;
-            width: 30%;
-        }
-
-        .greens-fill {
-            background: #58a832;
-            width: 13.8%;
-        }
-
-        .act-fill {
-            background: #f2c500;
-            width: 5%;
-        }
-
-        .nzfirst-fill {
-            background: #111111;
-            width: 11%;
-        }
-
-        /* =========================
-           ELECTORATES
-        ========================= */
-
-        .electorate-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .electorate-table th {
-            text-align: left;
-            padding: 12px 18px;
-            background: #f7f9fc;
-            color: var(--muted);
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        .electorate-table td {
-            padding: 13px 18px;
-            border-top: 1px solid #edf0f4;
-        }
-
-        .electorate-table tr:hover {
-            background: #fafcff;
-        }
-
-        .winner {
-            font-weight: 700;
-        }
-
-        .margin {
-            font-weight: 700;
-        }
-
-        .margin.safe {
-            color: var(--green);
-        }
-
-        .margin.close {
-            color: var(--orange);
-        }
-
-        .margin.marginal {
-            color: var(--red);
-        }
-
-        /* =========================
-           LATEST POLLS
-        ========================= */
-
-        .latest-poll {
-            padding: 16px 19px;
-            border-bottom: 1px solid #edf0f4;
-        }
-
-        .latest-poll:last-child {
-            border-bottom: none;
-        }
-
-        .poll-source {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .latest-poll h3 {
-            font-size: 14px;
-            margin: 4px 0;
-        }
-
-        .latest-result {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 9px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           TREND BOX
-        ========================= */
-
-        .trend-box {
-            padding: 20px;
-        }
-
-        .mini-chart {
-            height: 150px;
-            position: relative;
-            border-bottom: 1px solid #dfe4eb;
-            border-left: 1px solid #dfe4eb;
-            margin-top: 15px;
-            background:
-                linear-gradient(#edf0f4 1px, transparent 1px);
-            background-size: 100% 37px;
-        }
-
-        .trend-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 30px;
-            height: 3px;
-            background: var(--blue);
-            transform: rotate(-4deg);
-        }
-
-        .trend-line::before,
-        .trend-line::after {
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--blue);
-            top: -3px;
-        }
-
-        .trend-line::before {
-            left: 20%;
-        }
-
-        .trend-line::after {
-            right: 10%;
-        }
-
-        /* =========================
-           METHODOLOGY
-        ========================= */
-
-        .methodology {
-            padding: 20px;
-        }
-
-        .methodology p {
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .method-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .method-item {
-            background: #f6f8fb;
-            padding: 12px;
-            border-radius: 5px;
-        }
-
-        .method-item strong {
-            display: block;
-            font-size: 15px;
-        }
-
-        .method-item span {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        /* =========================
-           NEWS / ANALYSIS
-        ========================= */
-
-        .analysis-item {
-            padding: 16px 19px;
-            border-bottom: 1px solid #edf0f4;
-        }
-
-        .analysis-item:last-child {
-            border-bottom: none;
-        }
-
-        .analysis-tag {
-            color: var(--blue);
-            font-size: 10px;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .analysis-item h3 {
-            font-size: 14px;
-            margin: 4px 0;
-        }
-
-        .analysis-item p {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: var(--navy);
-            color: #c8d0dd;
-            padding: 40px 22px;
-        }
-
-        .footer-inner {
-            max-width: 1250px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 35px;
-        }
-
-        .footer-brand {
-            color: white;
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        footer p {
-            font-size: 12px;
-            color: #8e9aae;
-            max-width: 380px;
-        }
-
-        footer h4 {
-            color: white;
-            font-size: 13px;
-            margin-bottom: 10px;
-        }
-
-        footer ul {
-            list-style: none;
-        }
-
-        footer li {
-            font-size: 12px;
-            margin-bottom: 7px;
-            color: #9ba7b9;
-        }
-
-        .copyright {
-            max-width: 1250px;
-            margin: 30px auto 0;
-            padding-top: 18px;
-            border-top: 1px solid #29364c;
-            font-size: 11px;
-            color: #718096;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .poll-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .header-main {
-                align-items: flex-start;
-            }
-
-            .header-date {
-                display: none;
-            }
-
-            .nav-inner {
-                overflow-x: auto;
-            }
-
-            nav a {
-                white-space: nowrap;
-            }
-
-            .hero {
-                padding: 25px;
-            }
-
-            .hero h1 {
-                font-size: 29px;
-            }
-
-            .poll-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .method-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TVSC Pollwatch | Square Country</title>
+
+<style>
+:root {
+    --navy: #111a2b;
+    --navy2: #1b2940;
+    --blue: #3478df;
+    --background: #f3f5f8;
+    --white: #ffffff;
+    --text: #192335;
+    --muted: #778194;
+    --border: #e4e8ef;
+
+    --liberty: #a4d62b;
+    --freedoms: #d93643;
+    --greens: #176b3a;
+    --innovation: #f2c500;
+    --scfirst: #34383d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* TOP BAR */
+
+.topbar {
+    background: #09111e;
+    color: #c4ccda;
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 24px;
+}
+
+.topbar .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    max-width: 1300px;
+    margin: auto;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+    background: var(--navy);
+    color: white;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    font-size: 19px;
+    border-bottom: 4px solid var(--blue);
+}
+
+.brand h1 {
+    font-size: 27px;
+    letter-spacing: -1px;
+}
+
+.brand p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.header-info {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* NAVIGATION */
+
+nav {
+    background: var(--navy);
+    color: white;
+}
+
+.nav-inner {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 24px;
+    display: flex;
+    overflow-x: auto;
+}
+
+nav a {
+    padding: 15px 17px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--blue);
+}
+
+/* MAIN */
+
+main {
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px 24px 60px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
+}
+
+.section-heading h2 {
+    font-size: 20px;
+}
+
+.section-heading a {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+    background: var(--navy);
+    color: white;
+    padding: 40px;
+    border-radius: 9px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+
+.hero-label {
+    display: inline-block;
+    background: var(--blue);
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+}
+
+.hero p {
+    color: #b8c4d6;
+    font-size: 14px;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 23px;
+}
+
+.button {
+    padding: 11px 17px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.button-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.button-secondary {
+    border: 1px solid #63718a;
+    color: white;
+}
+
+.hero-stat {
+    background: var(--navy2);
+    border: 1px solid #34435a;
+    border-radius: 7px;
+    padding: 25px;
+}
+
+.hero-stat .label {
+    color: #b5c0d0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.hero-stat .number {
+    font-size: 48px;
+    font-weight: 900;
+    margin: 5px 0;
+}
+
+.hero-stat .description {
+    color: #b5c0d0;
+    font-size: 12px;
+}
+
+.hero-stat hr {
+    border: 0;
+    border-top: 1px solid #39475c;
+    margin: 20px 0;
+}
+
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+/* PARLIAMENT OVERVIEW */
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 32px;
+}
+
+.overview-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.overview-card span {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.overview-card h3 {
+    font-size: 29px;
+    margin-top: 5px;
+}
+
+.overview-card p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* PARTY COLOURS */
+
+.party-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 7px;
+}
+
+.liberty { background: var(--liberty); }
+.freedoms { background: var(--freedoms); }
+.greens { background: var(--greens); }
+.innovation { background: var(--innovation); }
+.scfirst { background: var(--scfirst); }
+
+/* CONTENT GRID */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 17px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h3 {
+    font-size: 16px;
+}
+
+.panel-header a {
+    font-size: 11px;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+/* NATIONAL POLLING */
+
+.party-row {
+    padding: 14px 20px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.party-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.party-name {
+    display: flex;
+    align-items: center;
+}
+
+.progress {
+    width: 100%;
+    height: 9px;
+    background: #edf0f4;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.liberty-fill { background: var(--liberty); }
+.freedoms-fill { background: var(--freedoms); }
+.greens-fill { background: var(--greens); }
+.innovation-fill { background: var(--innovation); }
+.scfirst-fill { background: var(--scfirst); }
+
+/* POLLING CARDS */
+
+.poll-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.poll-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 19px;
+    border-radius: 7px;
+}
+
+.poll-card small {
+    color: var(--muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 10px;
+}
+
+.poll-card h3 {
+    font-size: 15px;
+    margin: 7px 0;
+}
+
+.poll-card strong {
+    font-size: 29px;
+}
+
+/* ELECTORATE TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+th {
+    background: #f6f8fb;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: left;
+    padding: 13px 17px;
+}
+
+td {
+    padding: 13px 17px;
+    border-top: 1px solid #edf0f4;
+}
+
+tr:hover td {
+    background: #fafbfe;
+}
+
+.party-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.margin-close { color: #d18a20; }
+.margin-safe { color: #16834a; }
+
+/* SEAT PROJECTION */
+
+.seat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #edf0f4;
+    font-size: 13px;
+}
+
+.seat-row strong {
+    font-size: 14px;
+}
+
+.seat-total {
+    background: #f6f8fb;
+    padding: 16px 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.seat-visual {
+    display: flex;
+    height: 15px;
+    margin: 18px 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.seat-visual div {
+    height: 100%;
+}
+
+/* LATEST POLLS */
+
+.latest-poll {
+    padding: 16px 20px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.latest-poll small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.latest-poll h4 {
+    font-size: 13px;
+    margin: 4px 0 9px;
+}
+
+.latest-poll div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* ELECTORATE DIRECTORY */
+
+.electorate-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.electorate-list a {
+    padding: 14px 18px;
+    font-size: 12px;
+    border-bottom: 1px solid #edf0f4;
+    border-right: 1px solid #edf0f4;
+    font-weight: 600;
+}
+
+.electorate-list a:hover {
+    background: #f1f5fc;
+    color: var(--blue);
+}
+
+/* ANALYSIS */
+
+.analysis-item {
+    padding: 16px 20px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.analysis-item small {
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.analysis-item h4 {
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.analysis-item p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* METHODOLOGY */
+
+.methodology {
+    padding: 20px;
+}
+
+.methodology p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.method-item {
+    background: #f5f7fa;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.method-item strong {
+    display: block;
+    font-size: 15px;
+}
+
+.method-item small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--navy);
+    color: white;
+    padding: 40px 24px;
+}
+
+.footer-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 35px;
+}
+
+.footer-inner h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.footer-inner h4 {
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.footer-inner p,
+.footer-inner li {
+    font-size: 11px;
+    color: #a7b3c4;
+}
+
+.footer-inner ul {
+    list-style: none;
+}
+
+.footer-inner li {
+    margin-bottom: 8px;
+}
+
+.copyright {
+    max-width: 1300px;
+    margin: 30px auto 0;
+    border-top: 1px solid #344158;
+    padding-top: 18px;
+    color: #8290a5;
+    font-size: 10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .overview-grid,
+    .poll-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .header-info {
+        display: none;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h2 {
+        font-size: 29px;
+    }
+
+    .overview-grid,
+    .poll-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .electorate-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    .panel:has(table) {
+        overflow-x: auto;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
-    <div class="topbar">
-        <div class="topbar-inner">
-            <span>TVSC Pollwatch</span>
-            <span>Independent Electoral Data & Analysis</span>
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container">
+        <span>TVSC POLLWATCH</span>
+        <span>Square Country Political Research & Electoral Data</span>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <div class="brand">
+            <div class="logo">PW</div>
+            <div>
+                <h1>TVSC Pollwatch</h1>
+                <p>Political Polling | Electoral Data | Analysis</p>
+            </div>
+        </div>
+
+        <div class="header-info">
+            <strong>Square Country</strong><br>
+            Parliament: 26 Seats
+        </div>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="active">Home</a>
+        <a href="#national">National Polling</a>
+        <a href="#electorates">Electorates</a>
+        <a href="#projections">Seat Projections</a>
+        <a href="#latest">Latest Polls</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#methodology">Methodology</a>
+    </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <span class="hero-label">SQUARE COUNTRY POLLING</span>
+
+        <h2>Understanding the numbers behind Square Country politics.</h2>
+
+        <p>
+            TVSC Pollwatch provides comprehensive political polling,
+            electorate-level data, parliamentary projections and
+            election analysis across Square Country.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#national" class="button button-primary">
+                Explore National Polling
+            </a>
+            <a href="#electorates" class="button button-secondary">
+                Browse Electorates
+            </a>
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="header-main">
+    <div class="hero-stat">
+        <div class="label">Square Country Parliament</div>
+        <div class="number">26</div>
+        <div class="description">Total parliamentary seats</div>
 
-            <div class="brand">
-                <div class="logo">PW</div>
+        <hr>
 
-                <div>
-                    <div class="brand-name">TVSC Pollwatch</div>
-                    <div class="brand-subtitle">
-                        Political Polling • Electoral Data • Analysis
-                    </div>
-                </div>
-            </div>
-
-            <div class="header-date">
-                <strong>Saturday, 17 October 2026</strong><br>
-                Last updated: 6:30 PM NZDT
-            </div>
-
-        </div>
-    </header>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="active">Home</a>
-            <a href="#">National Polling</a>
-            <a href="#">Electorates</a>
-            <a href="#">Poll Tracker</a>
-            <a href="#">Projections</a>
-            <a href="#">Historical Data</a>
-            <a href="#">Methodology</a>
-            <a href="#">About</a>
-        </div>
-    </nav>
-
-    <main>
-
-        <!-- HERO -->
-        <section class="hero">
-
-            <div>
-                <span class="hero-label">2026 General Election</span>
-
-                <h1>
-                    Tracking the numbers<br>
-                    behind the election.
-                </h1>
-
-                <p>
-                    TVSC Pollwatch brings together electorate polling,
-                    national voting-intention data, historical trends and
-                    electoral projections in one place.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">
-                        Explore Polling
-                    </a>
-
-                    <a href="#" class="btn btn-secondary">
-                        View Electorates
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-stat">
-
-                <div class="hero-stat-title">
-                    Current Pollwatch Projection
-                </div>
-
-                <div class="hero-stat-number">
-                    61
-                </div>
-
-                <div class="hero-stat-small">
-                    seats projected for the governing bloc
-                </div>
-
-                <hr style="border:0;border-top:1px solid #293851;margin:18px 0;">
-
-                <div style="display:flex;justify-content:space-between;font-size:13px;">
-                    <span>Majority</span>
-                    <strong>60 seats</strong>
-                </div>
-
-                <div style="display:flex;justify-content:space-between;font-size:13px;margin-top:7px;">
-                    <span>Status</span>
-                    <strong style="color:#48c97a;">Majority</strong>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- NATIONAL POLL -->
-        <div class="section-title">
-            <h2>Latest National Polling</h2>
-            <a href="#">View full polling →</a>
+        <div class="stat-line">
+            <span>Majority threshold</span>
+            <strong>14 seats</strong>
         </div>
 
-        <section class="poll-grid">
-
-            <div class="poll-card">
-                <div class="label">National</div>
-                <h3>National Party</h3>
-                <span class="poll-number">38%</span>
-                <span class="poll-change up">▲ 2.0</span>
-            </div>
-
-            <div class="poll-card">
-                <div class="label">National</div>
-                <h3>Labour Party</h3>
-                <span class="poll-number">30%</span>
-                <span class="poll-change down">▼ 1.0</span>
-            </div>
-
-            <div class="poll-card">
-                <div class="label">National</div>
-                <h3>Green Party</h3>
-                <span class="poll-number">13.8%</span>
-                <span class="poll-change up">▲ 0.4</span>
-            </div>
-
-            <div class="poll-card">
-                <div class="label">National</div>
-                <h3>NZ First</h3>
-                <span class="poll-number">11%</span>
-                <span class="poll-change up">▲ 0.7</span>
-            </div>
-
-        </section>
-
-
-        <!-- CONTENT -->
-        <div class="content-grid">
-
-            <!-- LEFT COLUMN -->
-            <div>
-
-                <!-- PARTY VOTING -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>Voting Intention</h2>
-                        <a href="#">Full breakdown →</a>
-                    </div>
-
-                    <div class="party-row">
-                        <div class="party-info">
-                            <span class="party-name">
-                                <span class="party-dot national"></span>
-                                National
-                            </span>
-                            <span>38.0%</span>
-                        </div>
-
-                        <div class="bar">
-                            <div class="bar-fill national-fill"></div>
-                        </div>
-                    </div>
-
-                    <div class="party-row">
-                        <div class="party-info">
-                            <span class="party-name">
-                                <span class="party-dot labour"></span>
-                                Labour
-                            </span>
-                            <span>30.0%</span>
-                        </div>
-
-                        <div class="bar">
-                            <div class="bar-fill labour-fill"></div>
-                        </div>
-                    </div>
-
-                    <div class="party-row">
-                        <div class="party-info">
-                            <span class="party-name">
-                                <span class="party-dot greens"></span>
-                                Green Party
-                            </span>
-                            <span>13.8%</span>
-                        </div>
-
-                        <div class="bar">
-                            <div class="bar-fill greens-fill"></div>
-                        </div>
-                    </div>
-
-                    <div class="party-row">
-                        <div class="party-info">
-                            <span class="party-name">
-                                <span class="party-dot nzfirst"></span>
-                                NZ First
-                            </span>
-                            <span>11.0%</span>
-                        </div>
-
-                        <div class="bar">
-                            <div class="bar-fill nzfirst-fill"></div>
-                        </div>
-                    </div>
-
-                    <div class="party-row">
-                        <div class="party-info">
-                            <span class="party-name">
-                                <span class="party-dot act"></span>
-                                ACT
-                            </span>
-                            <span>5.0%</span>
-                        </div>
-
-                        <div class="bar">
-                            <div class="bar-fill act-fill"></div>
-                        </div>
-                    </div>
-
-                </section>
-
-
-                <!-- ELECTORATES -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>Featured Electorates</h2>
-                        <a href="#">All electorates →</a>
-                    </div>
-
-                    <table class="electorate-table">
-
-                        <thead>
-                            <tr>
-                                <th>Electorate</th>
-                                <th>Projected Winner</th>
-                                <th>Party</th>
-                                <th>Margin</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-                                <td>Mount Maunganui</td>
-                                <td class="winner">National</td>
-                                <td>National</td>
-                                <td class="margin safe">+12.4</td>
-                            </tr>
-
-                            <tr>
-                                <td>Auckland Central</td>
-                                <td class="winner">National</td>
-                                <td>National</td>
-                                <td class="margin close">+4.2</td>
-                            </tr>
-
-                            <tr>
-                                <td>Hamilton East</td>
-                                <td class="winner">National</td>
-                                <td>National</td>
-                                <td class="margin close">+3.1</td>
-                            </tr>
-
-                            <tr>
-                                <td>Christchurch Central</td>
-                                <td class="winner">Labour</td>
-                                <td>Labour</td>
-                                <td class="margin marginal">+1.8</td>
-                            </tr>
-
-                            <tr>
-                                <td>Maungakiekie</td>
-                                <td class="winner">National</td>
-                                <td>National</td>
-                                <td class="margin safe">+8.7</td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </section>
-
-
-                <!-- POLLING TREND -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>National Polling Trend</h2>
-                        <a href="#">Open tracker →</a>
-                    </div>
-
-                    <div class="trend-box">
-
-                        <div style="display:flex;justify-content:space-between;font-size:12px;">
-                            <span>National Party</span>
-                            <strong>38%</strong>
-                        </div>
-
-                        <div class="mini-chart">
-                            <div class="trend-line"></div>
-                        </div>
-
-                        <div style="display:flex;justify-content:space-between;margin-top:7px;color:#8792a5;font-size:10px;">
-                            <span>Jan</span>
-                            <span>Mar</span>
-                            <span>May</span>
-                            <span>Jul</span>
-                            <span>Sep</span>
-                            <span>Oct</span>
-                        </div>
-
-                    </div>
-
-                </section>
-
-            </div>
-
-
-            <!-- RIGHT COLUMN -->
-            <aside>
-
-                <!-- LATEST POLLS -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>Latest Polls</h2>
-                        <a href="#">More →</a>
-                    </div>
-
-                    <div class="latest-poll">
-
-                        <div class="poll-source">
-                            TVSC Pollwatch • 17 Oct
-                        </div>
-
-                        <h3>National Voting Intention</h3>
-
-                        <div class="latest-result">
-                            <span>National</span>
-                            <strong>38%</strong>
-                        </div>
-
-                        <div class="latest-result">
-                            <span>Labour</span>
-                            <strong>30%</strong>
-                        </div>
-
-                    </div>
-
-                    <div class="latest-poll">
-
-                        <div class="poll-source">
-                            TVSC Electorate Poll • 15 Oct
-                        </div>
-
-                        <h3>Mount Maunganui</h3>
-
-                        <div class="latest-result">
-                            <span>National</span>
-                            <strong>47%</strong>
-                        </div>
-
-                        <div class="latest-result">
-                            <span>Labour</span>
-                            <strong>34%</strong>
-                        </div>
-
-                    </div>
-
-                    <div class="latest-poll">
-
-                        <div class="poll-source">
-                            TVSC Electorate Poll • 13 Oct
-                        </div>
-
-                        <h3>Auckland Central</h3>
-
-                        <div class="latest-result">
-                            <span>National</span>
-                            <strong>42%</strong>
-                        </div>
-
-                        <div class="latest-result">
-                            <span>Labour</span>
-                            <strong>38%</strong>
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- PROJECTION -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>Seat Projection</h2>
-                        <a href="#">Details →</a>
-                    </div>
-
-                    <div style="padding:20px;">
-
-                        <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
-                            <span style="font-size:13px;">National</span>
-                            <strong>49</strong>
-                        </div>
-
-                        <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
-                            <span style="font-size:13px;">Labour</span>
-                            <strong>38</strong>
-                        </div>
-
-                        <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
-                            <span style="font-size:13px;">Green</span>
-                            <strong>17</strong>
-                        </div>
-
-                        <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
-                            <span style="font-size:13px;">NZ First</span>
-                            <strong>14</strong>
-                        </div>
-
-                        <div style="display:flex;justify-content:space-between;margin-bottom:13px;">
-                            <span style="font-size:13px;">ACT</span>
-                            <strong>7</strong>
-                        </div>
-
-                        <hr style="border:0;border-top:1px solid #e5e8ed;margin:15px 0;">
-
-                        <div style="display:flex;justify-content:space-between;">
-                            <strong>Majority</strong>
-                            <strong>60 seats</strong>
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- METHODOLOGY -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>About Our Polls</h2>
-                    </div>
-
-                    <div class="methodology">
-
-                        <p>
-                            Pollwatch publishes polling data alongside
-                            transparent methodology and fieldwork information.
-                        </p>
-
-                        <div class="method-grid">
-
-                            <div class="method-item">
-                                <strong>1,250</strong>
-                                <span>Sample size</span>
-                            </div>
-
-                            <div class="method-item">
-                                <strong>±2.8%</strong>
-                                <span>Margin of error</span>
-                            </div>
-
-                            <div class="method-item">
-                                <strong>Online</strong>
-                                <span>Collection method</span>
-                            </div>
-
-                            <div class="method-item">
-                                <strong>18+</strong>
-                                <span>Eligible voters</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- ANALYSIS -->
-                <section class="panel">
-
-                    <div class="panel-header">
-                        <h2>Pollwatch Analysis</h2>
-                    </div>
-
-                    <div class="analysis-item">
-                        <div class="analysis-tag">Analysis</div>
-                        <h3>National extends polling lead</h3>
-                        <p>
-                            The latest figures show National maintaining
-                            a clear advantage over Labour.
-                        </p>
-                    </div>
-
-                    <div class="analysis-item">
-                        <div class="analysis-tag">Electorates</div>
-                        <h3>The seats to watch</h3>
-                        <p>
-                            Five electorates are currently classified as
-                            particularly competitive.
-                        </p>
-                    </div>
-
-                    <div class="analysis-item">
-                        <div class="analysis-tag">Data</div>
-                        <h3>How our projection works</h3>
-                        <p>
-                            An explanation of the Pollwatch electoral model.
-                        </p>
-                    </div>
-
-                </section>
-
-            </aside>
-
+        <div class="stat-line">
+            <span>Electorates</span>
+            <strong>13</strong>
         </div>
 
-    </main>
+        <div class="stat-line">
+            <span>Political parties</span>
+            <strong>5</strong>
+        </div>
+    </div>
+</section>
 
+<!-- OVERVIEW -->
+<div class="section-heading">
+    <h2>Political Overview</h2>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
+<section class="overview-grid">
 
-        <div class="footer-inner">
+    <div class="overview-card">
+        <span>Parliament</span>
+        <h3>26</h3>
+        <p>Total seats</p>
+    </div>
 
-            <div>
-                <div class="footer-brand">
-                    TVSC Pollwatch
-                </div>
+    <div class="overview-card">
+        <span>Majority</span>
+        <h3>14</h3>
+        <p>Seats required to govern</p>
+    </div>
 
-                <p>
-                    Political polling, electorate data and electoral
-                    analysis from TVSC. Pollwatch is a dedicated
-                    polling and data service separate from TVSC News.
-                </p>
+    <div class="overview-card">
+        <span>Electorates</span>
+        <h3>13</h3>
+        <p>Electoral districts</p>
+    </div>
+
+    <div class="overview-card">
+        <span>Political parties</span>
+        <h3>5</h3>
+        <p>Parties currently tracked</p>
+    </div>
+
+</section>
+
+<!-- POLLING CARDS -->
+<div class="section-heading">
+    <h2>Latest National Polling</h2>
+    <a href="#national">Full polling data →</a>
+</div>
+
+<section class="poll-grid">
+
+    <div class="poll-card">
+        <small>Liberty</small>
+        <h3><span class="party-indicator liberty"></span>Liberty</h3>
+        <strong>29%</strong>
+    </div>
+
+    <div class="poll-card">
+        <small>Freedoms</small>
+        <h3><span class="party-indicator freedoms"></span>Freedoms</h3>
+        <strong>27%</strong>
+    </div>
+
+    <div class="poll-card">
+        <small>Greens</small>
+        <h3><span class="party-indicator greens"></span>Greens</h3>
+        <strong>18%</strong>
+    </div>
+
+    <div class="poll-card">
+        <small>Innovation</small>
+        <h3><span class="party-indicator innovation"></span>Innovation</h3>
+        <strong>14%</strong>
+    </div>
+
+</section>
+
+<div class="content-grid">
+
+<!-- LEFT COLUMN -->
+<div>
+
+<!-- NATIONAL POLLING -->
+<section class="panel" id="national">
+
+    <div class="panel-header">
+        <h3>National Voting Intention</h3>
+        <a href="#">Full results →</a>
+    </div>
+
+    <div class="party-row">
+        <div class="party-info">
+            <span class="party-name">
+                <span class="party-indicator liberty"></span>
+                Liberty
+            </span>
+            <span>29%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-fill liberty-fill" style="width:29%"></div>
+        </div>
+    </div>
+
+    <div class="party-row">
+        <div class="party-info">
+            <span class="party-name">
+                <span class="party-indicator freedoms"></span>
+                Freedoms
+            </span>
+            <span>27%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-fill freedoms-fill" style="width:27%"></div>
+        </div>
+    </div>
+
+    <div class="party-row">
+        <div class="party-info">
+            <span class="party-name">
+                <span class="party-indicator greens"></span>
+                Greens
+            </span>
+            <span>18%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-fill greens-fill" style="width:18%"></div>
+        </div>
+    </div>
+
+    <div class="party-row">
+        <div class="party-info">
+            <span class="party-name">
+                <span class="party-indicator innovation"></span>
+                Innovation
+            </span>
+            <span>14%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-fill innovation-fill" style="width:14%"></div>
+        </div>
+    </div>
+
+    <div class="party-row">
+        <div class="party-info">
+            <span class="party-name">
+                <span class="party-indicator scfirst"></span>
+                SC First
+            </span>
+            <span>12%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-fill scfirst-fill" style="width:12%"></div>
+        </div>
+    </div>
+
+    <div style="padding:13px 20px;color:#778194;font-size:10px;">
+        Illustrative figures. Replace with actual polling data.
+    </div>
+
+</section>
+
+<!-- SEAT PROJECTIONS -->
+<section class="panel" id="projections">
+
+    <div class="panel-header">
+        <h3>Parliamentary Seat Projection</h3>
+        <a href="#">Projection details →</a>
+    </div>
+
+    <div class="seat-visual">
+        <div style="width:30.77%;background:var(--liberty)"></div>
+        <div style="width:23.08%;background:var(--freedoms)"></div>
+        <div style="width:19.23%;background:var(--greens)"></div>
+        <div style="width:15.38%;background:var(--innovation)"></div>
+        <div style="width:11.54%;background:var(--scfirst)"></div>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator liberty"></span>Liberty</span>
+        <strong>8</strong>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator freedoms"></span>Freedoms</span>
+        <strong>6</strong>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator greens"></span>Greens</span>
+        <strong>5</strong>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator innovation"></span>Innovation</span>
+        <strong>4</strong>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator scfirst"></span>SC First</span>
+        <strong>3</strong>
+    </div>
+
+    <div class="seat-total">
+        <strong>Total Parliament</strong>
+        <strong>26 Seats</strong>
+    </div>
+
+    <div style="padding:13px 20px;font-size:11px;color:#778194;">
+        Majority requires 14 seats.
+        Figures are illustrative projections.
+    </div>
+
+</section>
+
+<!-- ELECTORATE DIRECTORY -->
+<section class="panel" id="electorates">
+
+    <div class="panel-header">
+        <h3>Square Country Electorates</h3>
+        <a href="#">Electoral database →</a>
+    </div>
+
+    <div class="electorate-list">
+        <a href="#">Western Beaches →</a>
+        <a href="#">Square City →</a>
+        <a href="#">Surish Bridge →</a>
+        <a href="#">Masterton Central →</a>
+        <a href="#">Earlington →</a>
+        <a href="#">New Dublin →</a>
+        <a href="#">Wellingborough →</a>
+        <a href="#">Ertonmont →</a>
+        <a href="#">Doncastle →</a>
+        <a href="#">Cunningham →</a>
+        <a href="#">Queenstown →</a>
+        <a href="#">Kingsford →</a>
+        <a href="#">Uma no machi →</a>
+    </div>
+
+    <div style="padding:14px 19px;color:#778194;font-size:10px;">
+        Select an electorate to view polling, historical results,
+        candidates and projected outcomes.
+    </div>
+
+</section>
+
+<!-- ELECTORATE POLLING TABLE -->
+<section class="panel">
+
+    <div class="panel-header">
+        <h3>Electorate Polling</h3>
+        <a href="#">All electorate results →</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Electorate</th>
+                <th>Leading Party</th>
+                <th>Polling</th>
+                <th>Margin</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Western Beaches</td>
+                <td><span class="party-tag"><span class="party-indicator liberty"></span>Liberty</span></td>
+                <td>46%</td>
+                <td class="margin-close">+8%</td>
+            </tr>
+
+            <tr>
+                <td>Square City</td>
+                <td><span class="party-tag"><span class="party-indicator freedoms"></span>Freedoms</span></td>
+                <td>41%</td>
+                <td class="margin-close">+3%</td>
+            </tr>
+
+            <tr>
+                <td>Surish Bridge</td>
+                <td><span class="party-tag"><span class="party-indicator liberty"></span>Liberty</span></td>
+                <td>44%</td>
+                <td class="margin-safe">+11%</td>
+            </tr>
+
+            <tr>
+                <td>Masterton Central</td>
+                <td><span class="party-tag"><span class="party-indicator freedoms"></span>Freedoms</span></td>
+                <td>43%</td>
+                <td class="margin-close">+5%</td>
+            </tr>
+
+            <tr>
+                <td>Earlington</td>
+                <td><span class="party-tag"><span class="party-indicator liberty"></span>Liberty</span></td>
+                <td>40%</td>
+                <td class="margin-close">+2%</td>
+            </tr>
+
+            <tr>
+                <td>New Dublin</td>
+                <td><span class="party-tag"><span class="party-indicator greens"></span>Greens</span></td>
+                <td>38%</td>
+                <td class="margin-close">+4%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="padding:13px 20px;color:#778194;font-size:10px;">
+        Example data for website demonstration.
+    </div>
+
+</section>
+
+</div>
+
+<!-- RIGHT COLUMN -->
+<aside>
+
+<!-- LATEST POLLS -->
+<section class="panel" id="latest">
+
+    <div class="panel-header">
+        <h3>Latest Poll Releases</h3>
+        <a href="#">Archive →</a>
+    </div>
+
+    <div class="latest-poll">
+        <small>TVSC Pollwatch • 17 October 2026</small>
+        <h4>National Voting Intention</h4>
+        <div><span>Liberty</span><strong>29%</strong></div>
+        <div><span>Freedoms</span><strong>27%</strong></div>
+    </div>
+
+    <div class="latest-poll">
+        <small>TVSC Pollwatch • 14 October 2026</small>
+        <h4>Western Beaches Poll</h4>
+        <div><span>Liberty</span><strong>46%</strong></div>
+        <div><span>Freedoms</span><strong>38%</strong></div>
+    </div>
+
+    <div class="latest-poll">
+        <small>TVSC Pollwatch • 10 October 2026</small>
+        <h4>Square City Poll</h4>
+        <div><span>Freedoms</span><strong>41%</strong></div>
+        <div><span>Liberty</span><strong>38%</strong></div>
+    </div>
+
+</section>
+
+<!-- PARTY INFORMATION -->
+<section class="panel">
+
+    <div class="panel-header">
+        <h3>Political Parties</h3>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator liberty"></span>Liberty</span>
+        <small>Centre-right</small>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator freedoms"></span>Freedoms</span>
+        <small>Centre-left</small>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator greens"></span>Greens</span>
+        <small>Far-left</small>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator innovation"></span>Innovation</span>
+        <small>Centre</small>
+    </div>
+
+    <div class="seat-row">
+        <span><span class="party-indicator scfirst"></span>SC First</span>
+        <small>Right</small>
+    </div>
+
+</section>
+
+<!-- METHODOLOGY -->
+<section class="panel" id="methodology">
+
+    <div class="panel-header">
+        <h3>Polling Methodology</h3>
+    </div>
+
+    <div class="methodology">
+        <p>
+            Transparency is central to credible political polling.
+            Every TVSC Pollwatch release should include information
+            about how its figures were collected.
+        </p>
+
+        <div class="method-grid">
+            <div class="method-item">
+                <strong>1,000</strong>
+                <small>Example sample size</small>
             </div>
 
-            <div>
-                <h4>Polling</h4>
-                <ul>
-                    <li>National Polling</li>
-                    <li>Electorate Polling</li>
-                    <li>Poll Tracker</li>
-                    <li>Historical Polls</li>
-                </ul>
+            <div class="method-item">
+                <strong>±3.1%</strong>
+                <small>Example margin of error</small>
             </div>
 
-            <div>
-                <h4>Data</h4>
-                <ul>
-                    <li>Electorates</li>
-                    <li>Seat Projections</li>
-                    <li>Election Results</li>
-                    <li>Historical Results</li>
-                </ul>
+            <div class="method-item">
+                <strong>18+</strong>
+                <small>Eligible respondents</small>
             </div>
 
-            <div>
-                <h4>Information</h4>
-                <ul>
-                    <li>Methodology</li>
-                    <li>About Pollwatch</li>
-                    <li>Contact</li>
-                    <li>Corrections</li>
-                </ul>
+            <div class="method-item">
+                <strong>Online</strong>
+                <small>Example collection method</small>
             </div>
+        </div>
+    </div>
 
+</section>
+
+<!-- ANALYSIS -->
+<section class="panel" id="analysis">
+
+    <div class="panel-header">
+        <h3>Pollwatch Analysis</h3>
+        <a href="#">All analysis →</a>
+    </div>
+
+    <div class="analysis-item">
+        <small>National Politics</small>
+        <h4>The state of the Square Country Parliament</h4>
+        <p>Examining the current parliamentary balance and party support.</p>
+    </div>
+
+    <div class="analysis-item">
+        <small>Electoral Analysis</small>
+        <h4>Which electorates could decide the election?</h4>
+        <p>A closer look at competitive constituencies across Square Country.</p>
+    </div>
+
+    <div class="analysis-item">
+        <small>Polling Analysis</small>
+        <h4>Understanding the latest voting intention figures</h4>
+        <p>Breaking down the latest national polling data.</p>
+    </div>
+
+</section>
+
+</aside>
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <h3>TVSC Pollwatch</h3>
+            <p>
+                A dedicated political polling and electoral research
+                service covering Square Country. Providing national
+                polling, electorate data, parliamentary projections
+                and political analysis.
+            </p>
         </div>
 
-        <div class="copyright">
-            © 2026 TVSC Pollwatch. All polling figures shown in this
-            demonstration are illustrative.
+        <div>
+            <h4>Polling</h4>
+            <ul>
+                <li>National Polling</li>
+                <li>Electorate Polling</li>
+                <li>Polling Archive</li>
+                <li>Polling Tracker</li>
+            </ul>
         </div>
 
-    </footer>
+        <div>
+            <h4>Electoral Data</h4>
+            <ul>
+                <li>Electorates</li>
+                <li>Parliamentary Projections</li>
+                <li>Election Results</li>
+                <li>Historical Data</li>
+            </ul>
+        </div>
 
+        <div>
+            <h4>Information</h4>
+            <ul>
+                <li>About Pollwatch</li>
+                <li>Methodology</li>
+                <li>Corrections</li>
+                <li>Contact</li>
+            </ul>
+        </div>
 
-    <script>
+    </div>
 
-        /*
-         * TVSC POLLWATCH
-         * Basic homepage functionality
-         */
+    <div class="copyright">
+        © 2026 TVSC Pollwatch | Square Country.
+        All rights reserved. Demonstration polling figures are illustrative.
+    </div>
 
-        // Highlight navigation links when clicked
-        const navLinks = document.querySelectorAll("nav a");
+</footer>
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", function() {
+<script>
+    // Navigation active state
+    const links = document.querySelectorAll("nav a");
 
-                navLinks.forEach(item => {
-                    item.classList.remove("active");
-                });
-
-                this.classList.add("active");
-
-            });
+    links.forEach(link => {
+        link.addEventListener("click", function() {
+            links.forEach(item => item.classList.remove("active"));
+            this.classList.add("active");
         });
-
-    </script>
+    });
+</script>
 
 </body>
 </html>
