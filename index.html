@@ -18,6 +18,7 @@
     --border:#e3e7ee;
 
     --liberty:#a4d62b;
+    --liberty-lean:#dcebb9;
     --freedoms:#d93643;
     --greens:#176b3a;
     --innovation:#f2c500;
@@ -36,8 +37,6 @@ body {
 a {text-decoration:none;color:inherit}
 .container {max-width:1350px;margin:auto;padding:0 24px}
 
-/* TOP BAR */
-
 .topbar {
     background:#09111e;
     color:#bdc7d7;
@@ -49,8 +48,6 @@ a {text-decoration:none;color:inherit}
     display:flex;
     justify-content:space-between;
 }
-
-/* HEADER */
 
 header {background:white;border-bottom:1px solid var(--border)}
 
@@ -79,10 +76,7 @@ header {background:white;border-bottom:1px solid var(--border)}
 
 .brand h1 {font-size:27px;letter-spacing:-1px}
 .brand p {font-size:11px;color:var(--muted)}
-
 .header-info {text-align:right;font-size:12px;color:var(--muted)}
-
-/* NAVIGATION */
 
 nav {background:var(--navy);color:white}
 
@@ -102,8 +96,6 @@ nav a {
 }
 
 nav a:hover,nav a.active {background:var(--blue)}
-
-/* MAIN */
 
 main {
     max-width:1350px;
@@ -139,8 +131,6 @@ main {
 
 .panel-header h3 {font-size:16px}
 .panel-header a {font-size:11px;color:var(--blue);font-weight:700}
-
-/* HERO */
 
 .hero {
     background:var(--navy);
@@ -195,7 +185,6 @@ main {
 
 .hero-stat .number {font-size:48px;font-weight:900}
 .hero-stat p {font-size:12px}
-
 .hero-stat hr {border:0;border-top:1px solid #39485f;margin:17px 0}
 
 .stat-line {
@@ -205,7 +194,7 @@ main {
     margin-bottom:9px;
 }
 
-/* OVERVIEW CARDS */
+/* OVERVIEW */
 
 .overview {
     display:grid;
@@ -231,7 +220,7 @@ main {
 .overview-card h3 {font-size:29px;margin-top:5px}
 .overview-card p {font-size:11px;color:var(--muted)}
 
-/* PARTY COLOURS */
+/* PARTIES */
 
 .liberty {background:var(--liberty)}
 .freedoms {background:var(--freedoms)}
@@ -246,7 +235,7 @@ main {
     margin-right:7px;
 }
 
-/* POLLING CARDS */
+/* POLLING */
 
 .poll-grid {
     display:grid;
@@ -271,8 +260,6 @@ main {
 
 .poll-card h3 {font-size:14px;margin:8px 0}
 .poll-card strong {font-size:28px}
-
-/* CONTENT GRID */
 
 .content-grid {
     display:grid;
@@ -305,8 +292,6 @@ main {
 
 .progress-fill {height:100%;border-radius:10px}
 
-/* THRESHOLD */
-
 .threshold-box {
     background:#f6f8fb;
     padding:15px 20px;
@@ -317,7 +302,7 @@ main {
 .threshold-box strong {font-size:13px}
 .threshold-box p {font-size:11px;color:var(--muted);margin-top:3px}
 
-/* PARLIAMENT SEATS */
+/* SEATS */
 
 .seat-visual {
     display:flex;
@@ -356,12 +341,40 @@ main {
 .breakdown-item strong {display:block;font-size:19px}
 .breakdown-item small {color:var(--muted);font-size:10px}
 
-/* ELECTORAL MAP */
+/* LIBERTY ELECTORATE SUMMARY */
 
-.map-container {
-    padding:15px;
-    background:#f7f8fa;
+.liberty-summary {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    padding:18px 20px;
 }
+
+.summary-card {
+    padding:16px;
+    border-radius:5px;
+}
+
+.summary-card strong {display:block;font-size:29px}
+.summary-card small {font-size:10px;font-weight:700}
+
+.summary-safe {background:#eff8dc;color:#466314}
+.summary-lean {background:#f3f7e9;color:#607a32}
+.summary-other {background:#f0f2f5;color:#657080}
+
+.classification-visual {
+    height:13px;
+    margin:0 20px 20px;
+    display:flex;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.classification-visual div {height:100%}
+
+/* MAP */
+
+.map-container {padding:15px;background:#f7f8fa}
 
 .map-container img {
     display:block;
@@ -398,16 +411,15 @@ main {
 
 .electorate-grid {
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
 }
 
 .electorate-item {
-    padding:12px 16px;
+    padding:12px 14px;
     border-top:1px solid #edf0f4;
-    border-right:1px solid #edf0f4;
     font-size:12px;
     display:flex;
-    gap:10px;
+    gap:9px;
     align-items:center;
 }
 
@@ -421,32 +433,35 @@ main {
 
 .electorate-name {font-weight:600}
 
+.classification-badge {
+    margin-left:auto;
+    padding:4px 7px;
+    border-radius:3px;
+    font-size:9px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.classification-badge.safe {
+    background:var(--liberty);
+    color:#26350b;
+}
+
+.classification-badge.lean {
+    background:var(--liberty-lean);
+    color:#526d20;
+}
+
+.classification-badge.unclassified {
+    background:#edf0f4;
+    color:#788397;
+}
+
 .directory-footer {
     padding:13px 18px;
     font-size:11px;
     color:var(--muted);
 }
-
-/* ELECTORATE TABLE */
-
-.table-wrap {overflow-x:auto}
-
-table {width:100%;border-collapse:collapse;font-size:12px}
-
-th {
-    background:#f6f8fb;
-    color:var(--muted);
-    text-transform:uppercase;
-    text-align:left;
-    font-size:10px;
-    padding:13px 16px;
-}
-
-td {padding:13px 16px;border-top:1px solid #edf0f4}
-
-tr:hover td {background:#fafbfe}
-
-.party-tag {font-weight:700;white-space:nowrap}
 
 /* LATEST POLLS */
 
@@ -528,8 +543,6 @@ footer {
     color:#8290a5;
 }
 
-/* RESPONSIVE */
-
 @media(max-width:950px) {
     .content-grid {grid-template-columns:1fr}
     .hero {grid-template-columns:1fr}
@@ -543,7 +556,8 @@ footer {
     .hero {padding:25px}
     .hero h2 {font-size:29px}
     .poll-grid {grid-template-columns:repeat(2,1fr)}
-    .electorate-grid {grid-template-columns:repeat(2,1fr)}
+    .electorate-grid {grid-template-columns:1fr}
+    .liberty-summary {grid-template-columns:1fr}
     .footer-inner {grid-template-columns:1fr}
 }
 </style>
@@ -647,7 +661,54 @@ footer {
     </div>
 </section>
 
-<!-- NATIONAL POLLING CARDS -->
+<!-- LIBERTY ELECTORATE POSITION -->
+
+<div class="heading">
+    <h2>Liberty Electorate Outlook</h2>
+    <a href="#electorates">View all electorates →</a>
+</div>
+
+<section class="panel">
+    <div class="panel-header">
+        <h3>Current Liberty Classifications</h3>
+        <span style="font-size:11px;color:var(--muted)">66 electorates</span>
+    </div>
+
+    <div class="liberty-summary">
+        <div class="summary-card summary-safe">
+            <small>LIBERTY SAFE</small>
+            <strong>30</strong>
+            <small>Electorates</small>
+        </div>
+        <div class="summary-card summary-lean">
+            <small>LIBERTY LEAN</small>
+            <strong>7</strong>
+            <small>Electorates</small>
+        </div>
+        <div class="summary-card summary-other">
+            <small>UNCLASSIFIED</small>
+            <strong>29</strong>
+            <small>Electorates</small>
+        </div>
+    </div>
+
+    <div class="classification-visual">
+        <div style="width:45.4545%;background:var(--liberty)"></div>
+        <div style="width:10.6061%;background:var(--liberty-lean)"></div>
+        <div style="width:43.9394%;background:#e5e7eb"></div>
+    </div>
+
+    <div class="seat-row">
+        <span>Liberty Safe + Liberty Lean</span>
+        <strong>37 / 66 (56.1%)</strong>
+    </div>
+
+    <div style="padding:12px 20px 18px;font-size:11px;color:var(--muted)">
+        Classifications represent current electoral assessments, not confirmed election results.
+    </div>
+</section>
+
+<!-- NATIONAL POLLING -->
 
 <div class="heading">
     <h2>Latest National Polling</h2>
@@ -656,27 +717,27 @@ footer {
 
 <section class="poll-grid">
     <div class="poll-card">
-        <small>Liberty</small>
+        <small>Party Support</small>
         <h3><span class="dot liberty"></span>Liberty</h3>
         <strong>29%</strong>
     </div>
     <div class="poll-card">
-        <small>Freedoms</small>
+        <small>Party Support</small>
         <h3><span class="dot freedoms"></span>Freedoms</h3>
         <strong>27%</strong>
     </div>
     <div class="poll-card">
-        <small>Greens</small>
+        <small>Party Support</small>
         <h3><span class="dot greens"></span>Greens</h3>
         <strong>18%</strong>
     </div>
     <div class="poll-card">
-        <small>Innovation</small>
+        <small>Party Support</small>
         <h3><span class="dot innovation"></span>Innovation</h3>
         <strong>14%</strong>
     </div>
     <div class="poll-card">
-        <small>SC First</small>
+        <small>Party Support</small>
         <h3><span class="dot scfirst"></span>SC First</h3>
         <strong>12%</strong>
     </div>
@@ -686,7 +747,7 @@ footer {
 
 <div>
 
-<!-- NATIONAL POLLING -->
+<!-- NATIONAL VOTING INTENTION -->
 
 <section class="panel" id="national">
     <div class="panel-header">
@@ -721,7 +782,7 @@ footer {
 
     <div class="threshold-box">
         <strong>4% Party Vote Threshold</strong>
-        <p>Parties must receive at least 4% of the party vote to qualify for proportional representation, subject to any applicable electorate-seat qualification.</p>
+        <p>Parties must receive at least 4% of the party vote to qualify for list representation, subject to any applicable electorate-seat qualification.</p>
     </div>
 
     <div style="padding:0 20px 15px;font-size:10px;color:var(--muted)">
@@ -749,45 +810,22 @@ footer {
         <div class="scfirst" style="width:10.417%"></div>
     </div>
 
-    <div class="seat-row">
-        <span><span class="dot liberty"></span>Liberty</span>
-        <strong>28</strong>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot freedoms"></span>Freedoms</span>
-        <strong>26</strong>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot greens"></span>Greens</span>
-        <strong>18</strong>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot innovation"></span>Innovation</span>
-        <strong>14</strong>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot scfirst"></span>SC First</span>
-        <strong>10</strong>
-    </div>
+    <div class="seat-row"><span><span class="dot liberty"></span>Liberty</span><strong>28</strong></div>
+    <div class="seat-row"><span><span class="dot freedoms"></span>Freedoms</span><strong>26</strong></div>
+    <div class="seat-row"><span><span class="dot greens"></span>Greens</span><strong>18</strong></div>
+    <div class="seat-row"><span><span class="dot innovation"></span>Innovation</span><strong>14</strong></div>
+    <div class="seat-row"><span><span class="dot scfirst"></span>SC First</span><strong>10</strong></div>
 
     <div class="seat-breakdown">
-        <div class="breakdown-item">
-            <strong>66</strong>
-            <small>Electorate seats</small>
-        </div>
-        <div class="breakdown-item">
-            <strong>30</strong>
-            <small>List seats</small>
-        </div>
+        <div class="breakdown-item"><strong>66</strong><small>Electorate seats</small></div>
+        <div class="breakdown-item"><strong>30</strong><small>List seats</small></div>
     </div>
 
     <div class="seat-row" style="background:#f5f7fa">
-        <strong>Total Parliament</strong>
-        <strong>96 Seats</strong>
+        <strong>Total Parliament</strong><strong>96 Seats</strong>
     </div>
     <div class="seat-row">
-        <span>Majority threshold</span>
-        <strong>49 seats</strong>
+        <span>Majority threshold</span><strong>49 seats</strong>
     </div>
 </section>
 
@@ -801,18 +839,17 @@ footer {
 
     <div class="map-container">
         <img src="electorate-map.png"
-             alt="Square Country electoral map showing the 66 electorates"
+             alt="Square Country electoral map"
              onerror="this.style.display='none';document.getElementById('map-error').style.display='block'">
 
         <div id="map-error" style="display:none;padding:35px;text-align:center;color:#778397">
             Electoral map image not found.<br>
-            Save the uploaded map as <strong>electorate-map.png</strong>
-            in the same folder as index.html.
+            Save the map as <strong>electorate-map.png</strong>.
         </div>
     </div>
 
     <div class="map-caption">
-        Square Country's 66 electorate boundaries. Map supplied for TVSC Pollwatch.
+        Square Country's 66 electorate boundaries.
     </div>
 </section>
 
@@ -825,11 +862,13 @@ footer {
     </div>
 
     <div class="directory-controls">
-        <input type="search" id="electorateSearch"
-               placeholder="Search electorates...">
+        <input type="search" id="electorateSearch" placeholder="Search electorates...">
 
         <select id="electorateFilter">
             <option value="all">All electorates</option>
+            <option value="safe">Liberty Safe</option>
+            <option value="lean">Liberty Lean</option>
+            <option value="unclassified">Unclassified</option>
             <option value="1-22">Electorates 1–22</option>
             <option value="23-44">Electorates 23–44</option>
             <option value="45-66">Electorates 45–66</option>
@@ -848,8 +887,6 @@ footer {
 <!-- RIGHT COLUMN -->
 
 <aside>
-
-<!-- LATEST POLLS -->
 
 <section class="panel" id="latest">
     <div class="panel-header">
@@ -879,13 +916,8 @@ footer {
     </div>
 </section>
 
-<!-- THRESHOLD -->
-
 <section class="panel">
-    <div class="panel-header">
-        <h3>Electoral Threshold</h3>
-    </div>
-
+    <div class="panel-header"><h3>Electoral Threshold</h3></div>
     <div style="padding:20px">
         <div style="font-size:34px;font-weight:900;color:var(--blue)">4%</div>
         <strong style="font-size:13px">Party Vote Threshold</strong>
@@ -897,41 +929,18 @@ footer {
     </div>
 </section>
 
-<!-- PARTY DIRECTORY -->
-
 <section class="panel">
-    <div class="panel-header">
-        <h3>Political Parties</h3>
-    </div>
+    <div class="panel-header"><h3>Political Parties</h3></div>
 
-    <div class="seat-row">
-        <span><span class="dot liberty"></span>Liberty</span>
-        <small>Centre-right</small>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot freedoms"></span>Freedoms</span>
-        <small>Centre-left</small>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot greens"></span>Greens</span>
-        <small>Far-left</small>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot innovation"></span>Innovation</span>
-        <small>Neo-liberal / Socially left</small>
-    </div>
-    <div class="seat-row">
-        <span><span class="dot scfirst"></span>SC First</span>
-        <small>Right</small>
-    </div>
+    <div class="seat-row"><span><span class="dot liberty"></span>Liberty</span><small>Centre-right</small></div>
+    <div class="seat-row"><span><span class="dot freedoms"></span>Freedoms</span><small>Centre-left</small></div>
+    <div class="seat-row"><span><span class="dot greens"></span>Greens</span><small>Far-left</small></div>
+    <div class="seat-row"><span><span class="dot innovation"></span>Innovation</span><small>Socially left</small></div>
+    <div class="seat-row"><span><span class="dot scfirst"></span>SC First</span><small>Right</small></div>
 </section>
 
-<!-- METHODOLOGY -->
-
 <section class="panel" id="methodology">
-    <div class="panel-header">
-        <h3>Polling Methodology</h3>
-    </div>
+    <div class="panel-header"><h3>Polling Methodology</h3></div>
 
     <div class="methodology">
         <p>
@@ -940,32 +949,16 @@ footer {
         </p>
 
         <div class="method-grid">
-            <div class="method-item">
-                <strong>1,000</strong>
-                <small>Example sample size</small>
-            </div>
-            <div class="method-item">
-                <strong>±3.1%</strong>
-                <small>Example margin of error</small>
-            </div>
-            <div class="method-item">
-                <strong>18+</strong>
-                <small>Eligible respondents</small>
-            </div>
-            <div class="method-item">
-                <strong>Online</strong>
-                <small>Example collection</small>
-            </div>
+            <div class="method-item"><strong>1,000</strong><small>Example sample size</small></div>
+            <div class="method-item"><strong>±3.1%</strong><small>Example margin of error</small></div>
+            <div class="method-item"><strong>18+</strong><small>Eligible respondents</small></div>
+            <div class="method-item"><strong>Online</strong><small>Example collection</small></div>
         </div>
     </div>
 </section>
 
-<!-- ANALYSIS -->
-
 <section class="panel" id="analysis">
-    <div class="panel-header">
-        <h3>Pollwatch Analysis</h3>
-    </div>
+    <div class="panel-header"><h3>Pollwatch Analysis</h3></div>
 
     <div class="analysis-item">
         <small>National Politics</small>
@@ -989,8 +982,6 @@ footer {
 </aside>
 </div>
 </main>
-
-<!-- FOOTER -->
 
 <footer>
     <div class="footer-inner">
@@ -1115,7 +1106,53 @@ const electorates = [
 ];
 
 /* =====================================
-   RENDER ELECTORATES
+   LIBERTY CLASSIFICATIONS
+===================================== */
+
+// Safe Liberty electorates
+
+const libertySafe = [
+1,2,3,4,5,6,7,12,13,14,15,20,23,25,
+26,28,30,31,35,36,37,39,49,54,55,56,
+57,58,59,64
+];
+
+// Lean Liberty electorates
+
+const libertyLean = [
+9,17,18,24,29,61,63
+];
+
+/* =====================================
+   CLASSIFICATION FUNCTION
+===================================== */
+
+function getElectorateClassification(number) {
+
+    if(libertySafe.includes(number)) {
+        return "safe";
+    }
+
+    if(libertyLean.includes(number)) {
+        return "lean";
+    }
+
+    return "unclassified";
+}
+
+function getClassificationLabel(status) {
+
+    const labels = {
+        safe:"LIBERTY SAFE",
+        lean:"LIBERTY LEAN",
+        unclassified:"UNCLASSIFIED"
+    };
+
+    return labels[status];
+}
+
+/* =====================================
+   ELECTORATE DIRECTORY
 ===================================== */
 
 const grid = document.getElementById("electorateGrid");
@@ -1131,11 +1168,13 @@ function renderElectorates() {
     const results = electorates
         .map((name,index) => ({
             name,
-            number:index + 1
+            number:index + 1,
+            classification:getElectorateClassification(index + 1)
         }))
         .filter(item => {
 
-            const matchesName = item.name.toLowerCase().includes(query);
+            const matchesName =
+                item.name.toLowerCase().includes(query);
 
             let matchesRange = true;
 
@@ -1151,7 +1190,14 @@ function renderElectorates() {
                 matchesRange = item.number >= 45 && item.number <= 66;
             }
 
-            return matchesName && matchesRange;
+            const matchesClassification =
+                range === "safe" ||
+                range === "lean" ||
+                range === "unclassified"
+                    ? item.classification === range
+                    : true;
+
+            return matchesName && matchesRange && matchesClassification;
         });
 
     grid.innerHTML = "";
@@ -1171,7 +1217,11 @@ function renderElectorates() {
         name.className = "electorate-name";
         name.textContent = item.name;
 
-        element.append(number,name);
+        const badge = document.createElement("span");
+        badge.className = "classification-badge " + item.classification;
+        badge.textContent = getClassificationLabel(item.classification);
+
+        element.append(number,name,badge);
         grid.appendChild(element);
 
     });
